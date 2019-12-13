@@ -5,7 +5,7 @@ headerHeight = 96
 footerHeight = 64
 
 function staticparts.render()
-    lg.setColor(1, 0.3, 0)
+    lg.setColor(primaryColor)
     lg.rectangle('fill', 0, 0, width, headerHeight)           --top bar
     lg.rectangle('fill', 0, height-footerHeight, width, footerHeight)   --bottom bar
     lg.setColor(1, 1, 1)

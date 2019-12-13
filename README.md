@@ -45,16 +45,12 @@ The configuration isn't easily customizable, so manual labor is required.
 For developement (and saving our necks) we can turn off the vertical mode in `conf.lua`'s header.
 
 ```lua
-vertigoMode = false      --vertical rotation
-vertigoOrientation = -1  --orientation (1 rotates clockwise; -1 rotates counterclockwise)
-scale = 0.5              --scale down (for developement, mostly)
-scrWidth = 1920          --screen width
-scrHeight = 1080         --screen height
-```
-
-Other settings such as the header/footer color has to be set (for now) in `components/staticparts.lua`
-```lua
-lg.setColor(1, 0.3, 0)
+vertigoMode = false               --vertical rotation
+vertigoOrientation = -1           --orientation (1 rotates clockwise; -1 rotates counterclockwise)
+scale = 0.5                       --scale down (for developement, mostly)
+scrWidth = 1920                   --screen width
+scrHeight = 1080                  --screen height
+primaryColor = { 1.0, 0.1, 0.0 }  --header/footer color
 ```
 
 Logo can be changed by replacing the file at `assets/logo.png` or changing the filename at `components/staticparts.lua`.
