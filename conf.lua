@@ -1,4 +1,5 @@
-vertigoMode = false
+vertigoMode = true
+vertigoOrientation = -1  --1=clockwise, -1=counter-clockwise, 0=please dont
 scale = 0.5
 scrWidth = 1920
 scrHeight = 1080

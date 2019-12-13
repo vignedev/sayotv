@@ -41,7 +41,11 @@ function updateDimensions()
 end
 function vertigo()
 	if not vertigoMode then return end
+	--love.graphics.translate(_width/2, _height/2)
+	--love.graphics.rotate(-math.pi/2)
+	--love.graphics.translate(-_height/2, -_width/2)
+
 	love.graphics.translate(_width/2, _height/2)
-	love.graphics.rotate(-math.pi/2)
+	love.graphics.rotate(vertigoOrientation*math.pi/2)
 	love.graphics.translate(-_height/2, -_width/2)
 end
