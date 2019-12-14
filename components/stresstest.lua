@@ -1,8 +1,16 @@
 local stresstest = {}
-local image = lg.newImage('assets/2kTest.png')
-local image2 = lg.newImage('assets/2kTest_flip.png')
-local image3 = lg.newImage('assets/2kTest_rotate.png')
+
+net = require('../libs/net')
+
+local image = net.loadImage('http://localhost:89/images/test_1.png')--lg.newImage('assets/2kTest.png')
 local amount = 0
+
+local data = net.getJSON('http://localhost:89/api/info')
+print('marquee:', data['marquee'])
+print('slides:')
+for k,v in ipairs(data['slides']) do
+    print(k, v, #v)
+end
 
 function stresstest.render()
     local scale = width/image:getWidth()
@@ -12,14 +20,7 @@ function stresstest.render()
 
     lg.setColor(1,1,1)
     for y = 0, amount, 1 do
-        --lg.draw(image, img_width*time + img_width * y, headerHeight, time, scale * time)
-        if y % 2 == 0 then
-            lg.draw(image, 0, headerHeight+y*img_height - time*(img_height*amount), 0, scale)
-        elseif y % 3 == 0 then
-            lg.draw(image2, 0, headerHeight+y*img_height - time*(img_height*amount), 0, scale)
-        else
-            lg.draw(image3, 0, headerHeight+y*img_height - time*(img_height*amount), 0, scale)
-        end
+        lg.draw(image, 0, headerHeight+y*img_height - time*(img_height*amount), 0, scale)
     end
 end
 
@@ -31,7 +32,7 @@ function love.keypressed(key)
         amount = amount - 1
     end
 
-    if key == 'e' then
+    --[[if key == 'e' then
         if image:getHeight() == 2048 then
             image:release()
             image = lg.newImage('assets/4kTest.png')
@@ -39,7 +40,7 @@ function love.keypressed(key)
             image:release()
             image = lg.newImage('assets/2kTest.png')
         end
-    end
+    end]]--
 end
 
 return stresstest

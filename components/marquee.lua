@@ -1,5 +1,5 @@
 local marquee = {}
-local desiredFont = lg.newFont('assets/OpenSans-Regular.ttf', 24)
+local desiredFont = lg.newFont('assets/japanese.ttf', 24)
 
 marquee.text = ""
 marquee.length = 0
@@ -17,6 +17,7 @@ function marquee.update(speed)
     end
 end
 function marquee.render()
+    marquee.update(2)
     lg.setFont(desiredFont)
     lg.setColor(1,1,1)
     lg.print(marquee.text, marquee.x, (height - 64 + (64-marquee.height)/2) )
