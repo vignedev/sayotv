@@ -1,11 +1,12 @@
 local json = require('./libs/json')
 local http = require('socket.http')
 local net = {}
-local missing = lg.newImage('assets/missing_texture.png')
-missing:setFilter('nearest', 'nearest')
+local missing = love.image.newImageData('assets/missing_texture.png')
 
 function net.loadImage(url)
-    local result = missing
+    local result = lg.newImage(missing)
+    result:setFilter('nearest', 'nearest')
+    
     status, error = pcall(function()
         buffer, code, headers, status = http.request(url)
         code = 200

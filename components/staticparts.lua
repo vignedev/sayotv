@@ -9,7 +9,7 @@ function staticparts.render()
     lg.rectangle('fill', 0, 0, width, headerHeight)           --top bar
     lg.rectangle('fill', 0, height-footerHeight, width, footerHeight)   --bottom bar
     lg.setColor(1, 1, 1)
-    lg.draw(logo, (width-logo:getWidth())/2, (96-logo:getHeight())/2)
+    lg.draw(logo, (width-logo:getWidth())/2, (headerHeight-logo:getHeight())/2)
 end
 
 return staticparts

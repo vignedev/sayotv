@@ -1,9 +1,16 @@
+_os = love.system.getOS()
+
 vertigoMode = false
 vertigoOrientation = -1  --1=clockwise, -1=counter-clockwise, 0=please dont
-scale = 0.5
+scale = .5
 scrWidth = 1920
 scrHeight = 1080
 primaryColor = { 1.0, 0.1, 0.0 }
+
+if _os == 'Linux' then
+    vertigoMode = true
+    scale = 1
+end
 
 function love.conf(t)
    	t.window.resizable = true
@@ -15,7 +22,7 @@ function love.conf(t)
         t.window.height = scrWidth * scale
         t.window.width  = scrHeight * scale
     end
-    t.window.fullscreen = false-- love._os == "Android" or love._os == "iOS" or love._os == "Linux"
+    t.window.fullscreen = _os == 'Linux'
     t.window.fullscreentype = 'exclusive'
     t.accelerometerjoystick = false
     t.window.vsync = 1

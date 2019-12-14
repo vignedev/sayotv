@@ -13,6 +13,10 @@ const server = http.createServer((req,res) => {
                 {
                     slides: [
                         {
+                            images: [''],
+                            timeout:null
+                        },
+                        {
                             images: [
                                 '/images/test_1.png',
                                 '/images/test_2.png',
@@ -34,9 +38,11 @@ const server = http.createServer((req,res) => {
             break
         case '/images/test_1.png':
         case '/images/test_2.png':
+            res.end(cachedFiles[0]) 
+            break
         case '/images/test_3.png':
         case '/images/test_4.png':
-            res.end(cachedFiles[Math.floor(Math.random() * cachedFiles.length)])
+            res.end(cachedFiles[1])
             break
         default:
             res.statusCode = 400
@@ -44,4 +50,4 @@ const server = http.createServer((req,res) => {
             break
     }
 })
-server.listen(89)
+server.listen(89) //Math.floor(Math.random() * cachedFiles.length)
