@@ -12,7 +12,7 @@ const slides = [
         timeout:null
     },
     {
-        images: [''],
+        images: ['http://flutter.g6.cz/cross.php?url=https://safebooru.org//images/2731/ad9ccd44bbef27851f70688d1375cb65c07e90ec.png'],
         timeout: 60*50
     },
     {

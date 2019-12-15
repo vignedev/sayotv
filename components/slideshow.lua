@@ -21,7 +21,7 @@ local timer_refresh = 0
 
 function slideshow.loadNewData()
     print('slideshow.loadNewData()')
-    data = net.getJSON(server..'/api/info')
+    data = net.getJSON(net.resolveUrl('/api/info'))
     if data.marquee ~= nil then marquee.set(data.marquee) end
     currentIndex = 1
     slideshow.loadBullet()
@@ -52,7 +52,7 @@ function slideshow.loadBullet()
         currentTurns = 0
 
         for index,url in pairs(data.slides[currentIndex].images) do
-            local image = net.loadImage(server..url)
+            local image = net.loadImage(net.resolveUrl(url))
             local scale = width/image:getWidth()
             slideHeight = slideHeight + image:getHeight()*scale
             table.insert(slides, image)

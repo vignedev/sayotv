@@ -33,6 +33,15 @@ function net.getJSON(url)
     return result
 end
 
+function net.resolveUrl(url)
+    print(url, string.sub(url,1,1) == '/')
+    if string.sub(url,1,1) == '/' then
+        return server..url
+    else
+        return url
+    end
+end
+
 --[[function net.request(url)
     local result = nil
     status, error = pcall(function()

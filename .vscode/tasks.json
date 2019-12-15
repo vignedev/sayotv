@@ -5,7 +5,7 @@
     "tasks": [
         {
             "label": "Love2D",
-            "types": "shell",
+            "type": "shell",
             "command": "C:\\Portable Files\\Love2D\\love.exe",
             "args": ["${workspaceFolder}"],
             "group": {
