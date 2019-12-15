@@ -45,12 +45,13 @@ The configuration isn't easily customizable, so manual labor is required.
 For developement (and saving our necks) we can turn off the vertical mode in `conf.lua`'s header.
 
 ```lua
-vertigoMode = false               --vertical rotation
+server = 'http://localhost:89'    --server to fetch data from (see dummy.js for an example server)
+vertigoMode = false               --vertical rotation (automatically enabled for Linux devices)
 vertigoOrientation = -1           --orientation (1 rotates clockwise; -1 rotates counterclockwise)
-scale = 0.5                       --scale down (for developement, mostly)
+scale = 0.5                       --scale down (for developement, mostly; on Linux set to 1)
 scrWidth = 1920                   --screen width
 scrHeight = 1080                  --screen height
-primaryColor = { 1.0, 0.1, 0.0 }  --header/footer color
+primaryColor = { 1.0, 0.1, 0.0 }  --header/footer color (float values)
 ```
 
 Logo can be changed by replacing the file at `assets/logo.png` or changing the filename at `components/staticparts.lua`.

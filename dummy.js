@@ -13,6 +13,10 @@ const server = http.createServer((req,res) => {
                 {
                     slides: [
                         {
+                            images: [],
+                            timeout:null
+                        },
+                        {
                             images: [''],
                             timeout:null
                         },

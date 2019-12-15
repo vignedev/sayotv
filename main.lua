@@ -20,7 +20,6 @@ function love.draw()
 	updateDimensions()	--for testing purposes, can be removed in production with set resolution
 	vertigo()			--rotates canvas rendering style
 
-	--stresstest.render()
 	slideshow.render()
 
 	staticparts.render()

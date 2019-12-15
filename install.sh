@@ -33,7 +33,10 @@ git clone https://github.com/vignedev/sayotv
 
 # AutoUpdater (that has not been tested)
 echo "cd $(pwd)/sayotv" > "/home/$SUDO_USER/sayoTV.sh"
+echo "git fetch" >> "/home/$SUDO_USER/sayoTV.sh"
+echo "git stash" >> "/home/$SUDO_USER/sayoTV.sh"
 echo "git pull" >> "/home/$SUDO_USER/sayoTV.sh"
+echo "git stash pop" >> "/home/$SUDO_USER/sayoTV.sh"
 echo "love $(pwd)/sayotv" >> "/home/$SUDO_USER/sayoTV.sh"
 
 # Set autolaunch in .xinitrc

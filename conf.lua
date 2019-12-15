@@ -1,3 +1,4 @@
+server = 'http://192.168.1.182:89'
 vertigoMode = false
 vertigoOrientation = -1  --1=clockwise, -1=counter-clockwise, 0=please dont
 scale = .5
