@@ -6,36 +6,38 @@ const cachedFiles = [
     'assets/2kTest.png'
 ].map(x => fs.readFileSync(x))
 
+const slides = [
+    {
+        images: [],
+        timeout:null
+    },
+    {
+        images: [''],
+        timeout:null
+    },
+    {
+        images: [
+            '/images/test_1.png',
+            '/images/test_2.png',
+            '...'
+        ],
+        timeout: null
+    },
+    {
+        images: [
+            '/images/test_3.png',
+            '/images/test_4.png'
+        ],
+        timeout: null
+    }
+]
+
 const server = http.createServer((req,res) => {
     switch(req.url){
         case '/api/info':
             res.end(JSON.stringify(
                 {
-                    slides: [
-                        {
-                            images: [],
-                            timeout:null
-                        },
-                        {
-                            images: [''],
-                            timeout:null
-                        },
-                        {
-                            images: [
-                                '/images/test_1.png',
-                                '/images/test_2.png',
-                                '...'
-                            ],
-                            timeout: null
-                        },
-                        {
-                            images: [
-                                '/images/test_3.png',
-                                '/images/test_4.png'
-                            ],
-                            timeout: null
-                        }
-                    ],
+                    slides: (Math.random() > 0.5) ? [] : slides,
                     marquee: '美しき命の艶麗 紡がれた調べ 生まれゆく道 Believe me this is the right way 灯りは何処へ消えた? 手繰り寄せるように 伸ばす手は何も掴めないまま 息継ぎも上手くできず 冷えた唇 黙り込む'
                 }
             ))
