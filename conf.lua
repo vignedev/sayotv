@@ -6,7 +6,7 @@ scrHeight = 1080
 primaryColor = { 1.0, 0.1, 0.0 }
 
 -- If it's Linux, assume it's an RPi
-if _os == 'Linux' then
+if love._os == 'Linux' then
     vertigoMode = true
     scale = 1
 end
@@ -21,7 +21,7 @@ function love.conf(t)
         t.window.height = scrWidth * scale
         t.window.width  = scrHeight * scale
     end
-    t.window.fullscreen = _os == 'Linux'
+    t.window.fullscreen = love._os == 'Linux'
     t.window.fullscreentype = 'exclusive'
     t.accelerometerjoystick = false
     t.window.vsync = 1
