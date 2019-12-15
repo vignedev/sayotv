@@ -1,5 +1,3 @@
-_os = love.system.getOS()
-
 vertigoMode = false
 vertigoOrientation = -1  --1=clockwise, -1=counter-clockwise, 0=please dont
 scale = .5
@@ -7,7 +5,9 @@ scrWidth = 1920
 scrHeight = 1080
 primaryColor = { 1.0, 0.1, 0.0 }
 
-if _os == 'Linux' then
+-- If it's ARM Linux, assume it's an RPi
+local architecture = os.execute('uname -m')
+if architecture ~= 1 and architecture:find('arm') then
     vertigoMode = true
     scale = 1
 end
