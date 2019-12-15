@@ -8,12 +8,12 @@ const cachedFiles = [
 
 const slides = [
     {
-        images: [],
+        images: ['/images/test_1.png'],
         timeout:null
     },
     {
         images: [''],
-        timeout:null
+        timeout: 60*50
     },
     {
         images: [
@@ -37,7 +37,7 @@ const server = http.createServer((req,res) => {
         case '/api/info':
             res.end(JSON.stringify(
                 {
-                    slides: (Math.random() > 0.5) ? [] : slides,
+                    slides,//: (Math.random() > 0.5) ? [] : slides,
                     marquee: '美しき命の艶麗 紡がれた調べ 生まれゆく道 Believe me this is the right way 灯りは何処へ消えた? 手繰り寄せるように 伸ばす手は何も掴めないまま 息継ぎも上手くできず 冷えた唇 黙り込む'
                 }
             ))

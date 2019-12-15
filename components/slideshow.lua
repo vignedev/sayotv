@@ -23,10 +23,11 @@ function slideshow.loadNewData()
     print('slideshow.loadNewData()')
     data = net.getJSON(server..'/api/info')
     if data.marquee ~= nil then marquee.set(data.marquee) end
+    currentIndex = 1
     slideshow.loadBullet()
 end
 function slideshow.loadBullet()
-    print('slideshow.loadBullet()')
+    print('slideshow.loadBullet() '..currentIndex)
     if data.slides == nil or #data.slides == 0 then
         timer_refresh = slideshow.refreshWhenFailed
         return
@@ -34,6 +35,7 @@ function slideshow.loadBullet()
     if currentIndex > #data.slides then
         currentIndex = 1
         slideshow.loadNewData()
+        return  --forgot to leave the function
     end
 
     for index,image in pairs(slides) do
@@ -41,14 +43,14 @@ function slideshow.loadBullet()
         slides[index] = nil
     end
 
-    slideHeight = 0
-    position = -1
-    timer_atEnd = slideshow.delayAtEnd
-    timer_timeout = slideshow.defaultTimeout
-    direction = -1
-    currentTurns = 0
-
     if not (data.slides == nil or #data.slides == 0) then
+        slideHeight = 0
+        position = -1
+        timer_atEnd = slideshow.delayAtEnd
+        timer_timeout = data.slides[currentIndex].timeout or slideshow.defaultTimeout
+        direction = -1
+        currentTurns = 0
+
         for index,url in pairs(data.slides[currentIndex].images) do
             local image = net.loadImage(server..url)
             local scale = width/image:getWidth()
@@ -101,6 +103,9 @@ function slideshow.render()
         lg.draw(image, 0, headerHeight+buildup+position, 0, scale)
         buildup = buildup + image:getHeight()*scale
     end
+
+    lg.setColor(0,0,0)
+    lg.print(string.format('%.2f',timer_timeout/60), 16, headerHeight+16)
 end
 
 --debug functions
