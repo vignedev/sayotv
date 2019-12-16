@@ -26,10 +26,11 @@ apt update
 #         love          (the 2d engine)
 #         xserver-xorg  (xserver)
 #         xinit         (to have easy startx)
-apt install git love xserver-xorg xinit
+apt install git love xserver-xorg xinit -y
 
 # Clone the repository
 git clone https://github.com/vignedev/sayotv
+chown -R $SUDO_USER:$SUDO_USER "$(pwd)/sayotv"
 
 # AutoUpdater (that has not been tested)
 echo "cd $(pwd)/sayotv" > "/home/$SUDO_USER/sayoTV.sh"
@@ -38,13 +39,20 @@ echo "git stash" >> "/home/$SUDO_USER/sayoTV.sh"
 echo "git pull" >> "/home/$SUDO_USER/sayoTV.sh"
 echo "git stash pop" >> "/home/$SUDO_USER/sayoTV.sh"
 echo "love $(pwd)/sayotv" >> "/home/$SUDO_USER/sayoTV.sh"
+chmod +x "/home/$SUDO_USER/sayoTV.sh"
 
 # Set autolaunch in .xinitrc
 echo "/home/$SUDO_USER/sayoTV.sh" >> "/home/$SUDO_USER/.xinitrc"
 
+# Automatically launch it when bashrc
+echo "if [[\"\$(tty)\" == \"/dev/tty1\" ]]; then" >> "/home/$SUDO_USER/.bashrc"
+echo "startx" >> "/home/$SUDO_USER/.bashrc"
+echo "fi" >> "/home/$SUDO_USER/.bashrc"
+
 # Enable GPU support and Memory Split
 raspi-config nonint do_memory_split 128
-# raspi-config nonint do_gldriver G2 # enable it manually, I had issues with this cmd
+raspi-config nonint do_gldriver G2 # enable it manually, I had issues with this cmd
+raspi-config nonint do_boot_behaviour B2 # automatically login to console
 
 echo
 echo "Done. Restart if needed, run by startx or enable it with raspi-config."

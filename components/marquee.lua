@@ -1,5 +1,5 @@
 local marquee = {}
-local desiredFont = lg.newFont('assets/japanese.ttf', 24)
+local desiredFont = lg.newFont('assets/OpenSans-Regular.ttf', 24)
 
 marquee.text = ""
 marquee.length = 0
