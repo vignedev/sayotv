@@ -62,6 +62,7 @@ function slideshow.loadBullet()
     currentIndex = currentIndex + 1
 end
 function slideshow.render()
+    lg.setFont( monoFont )
     if data.slides == nil or #data.slides == 0 then
         if timer_refresh <= 0 then
             slideshow.loadNewData()
@@ -106,6 +107,26 @@ function slideshow.render()
 
     lg.setColor(0,0,0)
     lg.print(string.format('%.2f',timer_timeout/60), 16, headerHeight+16)
+    
+    lg.print(
+"local data                  = " .. tostring(data) .. " length(".. #data .. ")\n" ..
+"local slides                = " .. tostring(slides) .. " length(".. #slides .. ")\n" ..
+"local slideHeight           = " .. tostring(slideHeight) .. "\n" ..
+"local currentIndex          = " .. tostring(currentIndex) .. "\n" ..
+"local position              = " .. tostring(position) .. "\n" ..
+"local currentTurns          = " .. tostring(currentTurns) .. "\n" ..
+"local direction             = " .. tostring(direction) .. "\n" ..
+"\n"..
+"slideshow.speed             = " .. tostring(slideshow.speed) .. "\n" ..
+"slideshow.numberOfTurns     = " .. tostring(slideshow.numberOfTurns) .. "\n" ..
+"slideshow.defaultTimeout    = " .. tostring(slideshow.defaultTimeout) .. "\n" ..
+"slideshow.delayAtEnd        = " .. tostring(slideshow.delayAtEnd) .. "\n" ..
+"slideshow.refreshWhenFailed = " .. tostring(slideshow.refreshWhenFailed) .. "\n" ..
+"\n"..
+"local timer_atEnd           = " .. tostring(timer_atEnd) .. "\n" ..
+"local timer_timeout         = " .. tostring(timer_timeout) .. "\n" ..
+"local timer_refresh         = " .. tostring(timer_refresh) .. "\n"
+, 16, headerHeight+48)
 end
 
 --debug functions

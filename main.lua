@@ -7,6 +7,8 @@ devinfo = require('components/devinfo')
 marquee = require('components/marquee')
 slideshow = require('components/slideshow')
 
+monoFont = lg.newFont('assets/FiraCode-Retina.ttf')
+
 function love.load()
 	updateDimensions()						--for convinience, use width, height props, which are swapped in proper orientation
 	love.graphics.setBackgroundColor(1,1,1)	--set bg color
