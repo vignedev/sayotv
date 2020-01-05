@@ -35,7 +35,7 @@ end
 
 function net.resolveUrl(url)
     print(url, string.sub(url,1,1) == '/')
-    if string.sub(url,1,1) == '/' then
+    if string.sub(url,1,1) == '/' or string.sub(url,1,4) ~= 'http' then
         return server..url
     else
         return url

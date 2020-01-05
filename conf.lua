@@ -1,4 +1,4 @@
-server = 'http://sayotv.glitch.me'
+server = 'http://wigymtv.herokuapp.com/'
 vertigoMode = false
 vertigoOrientation = 1  --1=clockwise, -1=counter-clockwise, 0=please dont
 scale = .5
