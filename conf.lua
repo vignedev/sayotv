@@ -4,7 +4,7 @@ vertigoOrientation = 1  --1=clockwise, -1=counter-clockwise, 0=please dont
 scale = .5
 scrWidth = 1920
 scrHeight = 1080
-primaryColor = { 1.0, 0.1, 0.0 }
+primaryColor = { 0.12941176470588235294117647058824, 0.58823529411764705882352941176471, 0.95294117647058823529411764705882 }
 
 -- If it's Linux, assume it's an RPi
 if love._os == 'Linux' then

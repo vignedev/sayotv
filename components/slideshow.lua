@@ -99,13 +99,21 @@ function slideshow.render()
     end
 
     local buildup = 0
+    local currentlyRendering = 0
     for i,image in ipairs(slides) do
         local scale = width/image:getWidth()
-        lg.draw(image, 0, headerHeight+buildup+position, 0, scale)
+
+        local topPosition = headerHeight+buildup+position
+        local bottomPosition = topPosition+image:getHeight()*scale
+
+        if topPosition <= height-footerHeight and bottomPosition >= headerHeight then
+            lg.draw(image, 0, headerHeight+buildup+position, 0, scale)
+            currentlyRendering = currentlyRendering + 1
+        end
         buildup = buildup + image:getHeight()*scale
     end
 
-    lg.setColor(0,0,0)
+    lg.setColor(0,0,0, 0.2)
     lg.print(string.format('%.2f',timer_timeout/60), 16, headerHeight+16)
     
     lg.print(
@@ -125,7 +133,8 @@ function slideshow.render()
 "\n"..
 "local timer_atEnd           = " .. tostring(timer_atEnd) .. "\n" ..
 "local timer_timeout         = " .. tostring(timer_timeout) .. "\n" ..
-"local timer_refresh         = " .. tostring(timer_refresh) .. "\n"
+"local timer_refresh         = " .. tostring(timer_refresh) .. "\n" ..
+"local currentlyRendering    = " .. tostring(currentlyRendering) .. "\n"
 , 16, headerHeight+48)
 end
 
