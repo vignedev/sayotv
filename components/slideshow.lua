@@ -113,7 +113,7 @@ function slideshow.render()
         buildup = buildup + image:getHeight()*scale
     end
 
-    lg.setColor(0,0,0, 0.2)
+    --[[lg.setColor(0,0,0, 0.2)
     lg.print(string.format('%.2f',timer_timeout/60), 16, headerHeight+16)
     
     lg.print(
@@ -135,7 +135,7 @@ function slideshow.render()
 "local timer_timeout         = " .. tostring(timer_timeout) .. "\n" ..
 "local timer_refresh         = " .. tostring(timer_refresh) .. "\n" ..
 "local currentlyRendering    = " .. tostring(currentlyRendering) .. "\n"
-, 16, headerHeight+48)
+, 16, headerHeight+48)]]--
 end
 
 --debug functions

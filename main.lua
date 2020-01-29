@@ -26,7 +26,7 @@ function love.draw()
 
 	staticparts.render()
 	marquee.render()
-	devinfo.render(10, 10)
+	--devinfo.render(10, 10)
 end
 
 function updateDimensions()
