@@ -47,7 +47,7 @@ function slideshow.loadBullet()
         slideHeight = 0
         position = -1
         timer_atEnd = slideshow.delayAtEnd
-        timer_timeout = data.slides[currentIndex].timeout or slideshow.defaultTimeout
+        timer_timeout = (data.slides[currentIndex].timeout/1000*60) or slideshow.defaultTimeout
         direction = -1
         currentTurns = 0
 
