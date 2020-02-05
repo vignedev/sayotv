@@ -23,7 +23,6 @@ function love.draw()
 	vertigo()			--rotates canvas rendering style
 
 	slideshow.render()
-
 	staticparts.render()
 	marquee.render()
 	--devinfo.render(10, 10)
@@ -43,11 +42,11 @@ function updateDimensions()
 end
 function vertigo()
 	if not vertigoMode then return end
-	--love.graphics.translate(_width/2, _height/2)
-	--love.graphics.rotate(-math.pi/2)
-	--love.graphics.translate(-_height/2, -_width/2)
+	--lg.translate(_width/2, _height/2)
+	--lg.rotate(-math.pi/2)
+	--lg.translate(-_height/2, -_width/2)
 
-	love.graphics.translate(_width/2, _height/2)
-	love.graphics.rotate(vertigoOrientation*math.pi/2)
-	love.graphics.translate(-_height/2, -_width/2)
+	lg.translate(_width/2, _height/2)
+	lg.rotate(vertigoOrientation*math.pi/2)
+	lg.translate(-_height/2, -_width/2)
 end
