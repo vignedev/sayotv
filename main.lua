@@ -17,6 +17,13 @@ function love.load()
 end
 
 --function love.update(dt) marquee.update(2) end
+function love.update(dt)
+	local time = os.date('*t')
+	local morning = time.hour == 7 and time.min == 0 and time.sec >= 0 and time.sec <= 1
+	if(morning) then
+		love.event.quit('restart')
+	end
+end
 
 function love.draw()
 	updateDimensions()	--for testing purposes, can be removed in production with set resolution
